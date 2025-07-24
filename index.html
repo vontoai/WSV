@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wassersportverein</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .slideshow {
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .slideshow {
+        height: 90vh;
+      }
+    }
+
+    .slideshow img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slideshow img.active {
+      opacity: 1;
+    }
+
+    .slideshow-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    .slideshow-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 24px;
+      z-index: 10;
+    }
+
+    .slideshow-arrow:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .prev-arrow {
+      left: 10px;
+    }
+
+    .next-arrow {
+      right: 10px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+  <!-- Navigation -->
+  <header class="bg-blue-900 text-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <button class="md:hidden focus:outline-none" id="menu-toggle">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <nav class="hidden md:flex justify-center w-full space-x-6" id="nav-menu">
+        <a href="ueber-uns.html" class="hover:text-blue-300 transition-colors">Über uns</a>
+        <a href="mitglieder.html" class="hover:text-blue-300 transition-colors">Mitglieder</a>
+        <a href="news.html" class="hover:text-blue-300 transition-colors">News</a>
+        <a href="infos-gaeste.html" class="hover:text-blue-300 transition-colors">Infos für Gäste</a>
+        <a href="downloads.html" class="hover:text-blue-300 transition-colors">Downloads</a>
+        <a href="galerie.html" class="hover:text-blue-300 transition-colors">Galerie</a>
+        <a href="kontakt.html" class="hover:text-blue-300 transition-colors">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden bg-blue-800 text-white px-4 py-4" id="mobile-menu">
+    <nav class="flex flex-col space-y-3">
+      <a href="ueber-uns.html" class="hover:text-blue-300 transition-colors">Über uns</a>
+      <a href="mitglieder.html" class="hover:text-blue-300 transition-colors">Mitglieder</a>
+      <a href="news.html" class="hover:text-blue-300 transition-colors">News</a>
+      <a href="infos-gaeste.html" class="hover:text-blue-300 transition-colors">Infos für Gäste</a>
+      <a href="downloads.html" class="hover:text-blue-300 transition-colors">Downloads</a>
+      <a href="galerie.html" class="hover:text-blue-300 transition-colors">Galerie</a>
+      <a href="kontakt.html" class="hover:text-blue-300 transition-colors">Kontakt</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section mit Diashow -->
+  <section class="slideshow">
+    <div class="slideshow-content">
+      <h1 class="text-4xl md:text-5xl font-bold">Willkommen beim Wassersportverein</h1>
+      <p class="mt-4 text-lg md:text-xl">Gemeinschaft, Natur und Abenteuer auf dem Wasser</p>
+    </div>
+    <button class="slideshow-arrow prev-arrow" id="prevBtn">❮</button>
+    <button class="slideshow-arrow next-arrow" id="nextBtn">❯</button>
+    <img src="Slideshow/1.jpg" alt="Bild 1" class="active">
+    <img src="Slideshow/2.jpg" alt="Bild 2">
+    <img src="Slideshow/3.jpg" alt="Bild 3">
+  </section>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <a href="ueber-uns.html" class="card bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="PNG_Kategorien/Uber_uns.jpg" alt="Über uns" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-blue-900 mb-4">Über uns</h2>
+          <p class="text-gray-600">Erfahren Sie mehr über die Geschichte und Mission unseres Wassersportvereins.</p>
+        </div>
+      </a>
+
+      <a href="mitglieder.html" class="card bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="PNG_Kategorien/Mitglieder.jpg" alt="Mitglieder" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-blue-900 mb-4">Informationen für Mitglieder</h2>
+          <p class="text-gray-600">Alles Wichtige zu Mitgliedschaft, Hauptversammlung und Hafenmeister.</p>
+        </div>
+      </a>
+
+      <a href="news.html" class="card bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="PNG_Kategorien/News.jpg" alt="News" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-blue-900 mb-4">News</h2>
+          <p class="text-gray-600">Aktuelle Neuigkeiten und Veranstaltungen des Wassersportvereins.</p>
+        </div>
+      </a>
+
+      <a href="infos-gaeste.html" class="card bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="PNG_Kategorien/infosgaeste.jpg" alt="Infos für Gäste" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-blue-900 mb-4">Infos für Gäste</h2>
+          <p class="text-gray-600">Alles, was Gäste über Boote und Camping wissen müssen.</p>
+        </div>
+      </a>
+
+      <a href="downloads.html" class="card bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="PNG_Kategorien/Download.jpg" alt="Downloads" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-blue-900 mb-4">Downloads</h2>
+          <p class="text-gray-600">Wichtige Dokumente und Formulare zum Herunterladen.</p>
+        </div>
+      </a>
+
+      <a href="galerie.html" class="card bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="PNG_Kategorien/Galerie.jpg" alt="Galerie" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-blue-900 mb-4">Galerie</h2>
+          <p class="text-gray-600">Fotos und Videos von Vereinsaktivitäten, Ausfahrten, Events.</p>
+        </div>
+      </a>
+
+      <a href="kontakt.html" class="card bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="PNG_Kategorien/Kontakt.jpg" alt="Kontakt" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-blue-900 mb-4">Kontakt</h2>
+          <p class="text-gray-600">Kontaktieren Sie uns für weitere Informationen oder Fragen.</p>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-sm mb-2">Wassersportverein Wulfenerhals e.V. | 23769 Fehmarn, Campingplatz Wulfener Hals</p>
+      <p class="text-sm mb-2">E-Mail: Vorstand@wulfenerhals-wsv.de | Telefon: 01575 3540084</p>
+      <p class="text-sm mb-2 cursor-pointer hover:underline"><a href="impressum.html">Impressum</a></p>
+      <p class="text-sm">© 2025 Wassersportverein Wulfenerhals. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slideshow img');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+          slide.classList.add('active');
+        }
+      });
+    }
+
+    function nextSlide() {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    setInterval(nextSlide, 8000);
+    showSlide(slideIndex);
+  </script>
+</body>
+</html>

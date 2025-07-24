@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wassersportverein - Galerie</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+  <!-- Navigation -->
+  <header class="bg-blue-900 text-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <button class="md:hidden focus:outline-none" id="menu-toggle">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <nav class="hidden md:flex justify-center w-full space-x-6" id="nav-menu">
+        <a href="index.html" class="hover:text-blue-300 transition-colors">Startseite</a>
+        <a href="ueber-uns.html" class="hover:text-blue-300 transition-colors">Über uns</a>
+        <a href="mitglieder.html" class="hover:text-blue-300 transition-colors">Mitglieder</a>
+        <a href="news.html" class="hover:text-blue-300 transition-colors">News</a>
+        <a href="infos-gaeste.html" class="hover:text-blue-300 transition-colors">Infos für Gäste</a>
+        <a href="downloads.html" class="hover:text-blue-300 transition-colors">Downloads</a>
+        <a href="galerie.html" class="hover:text-blue-300 transition-colors">Galerie</a>
+        <a href="kontakt.html" class="hover:text-blue-300 transition-colors">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden bg-blue-800 text-white px-4 py-4" id="mobile-menu">
+    <nav class="flex flex-col space-y-3">
+      <a href="index.html" class="hover:text-blue-300 transition-colors">Startseite</a>
+      <a href="ueber-uns.html" class="hover:text-blue-300 transition-colors">Über uns</a>
+      <a href="mitglieder.html" class="hover:text-blue-300 transition-colors">Mitglieder</a>
+      <a href="news.html" class="hover:text-blue-300 transition-colors">News</a>
+      <a href="infos-gaeste.html" class="hover:text-blue-300 transition-colors">Infos für Gäste</a>
+      <a href="downloads.html" class="hover:text-blue-300 transition-colors">Downloads</a>
+      <a href="galerie.html" class="hover:text-blue-300 transition-colors">Galerie</a>
+      <a href="kontakt.html" class="hover:text-blue-300 transition-colors">Kontakt</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-blue-900 mb-8">Galerie</h1>
+
+    <!-- Jahresauswahl -->
+    <div class="mb-8 flex flex-wrap gap-4 justify-center">
+      <button class="year-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" data-year="2024">2024</button>
+      <button class="year-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" data-year="2025">2025</button>
+      <button class="year-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" data-year="2026">2026</button>
+      <button class="year-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" data-year="2027">2027</button>
+    </div>
+
+    <!-- Bilder-Galerie -->
+    <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Bilder werden hier per JavaScript geladen -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-sm mb-2">Wassersportverein Wulfenerhals e.V. | 23769 Fehmarn, Campingplatz Wulfener Hals</p>
+      <p class="text-sm mb-2">E-Mail: Vorstand@wulfenerhals-wsv.de | Telefon: 01575 3540084</p>
+      <p class="text-sm mb-2 cursor-pointer hover:underline"><a href="impressum.html">Impressum</a></p>
+      <p class="text-sm">© 2025 Wassersportverein Wulfenerhals. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- JS für Menü und Galerie -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Galerie-Bilder pro Jahr
+    const imagesByYear = {
+      "2024": [
+        "bilder/2024/galerie1.jpg",
+        "bilder/2024/galerie2.jpg"
+      ],
+      "2025": [
+        "bilder/2025/galerie1.jpg",
+        "bilder/2025/galerie2.jpg"
+      ],
+      "2026": [
+        "bilder/2026/galerie1.jpg",
+        "bilder/2026/galerie2.jpg"
+      ],
+      "2027": [
+        "bilder/2027/galerie1.jpg",
+        "bilder/2027/galerie2.jpg"
+      ],
+    };
+
+    const gallery = document.getElementById('gallery');
+    const buttons = document.querySelectorAll('.year-btn');
+
+    function showImages(year) {
+      gallery.innerHTML = '';
+
+      const images = imagesByYear[year] || [];
+      if (images.length === 0) {
+        gallery.innerHTML = `<p class="col-span-full text-center text-gray-600">Keine Bilder für ${year} vorhanden.</p>`;
+        return;
+      }
+
+      images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = `Bild ${year}`;
+        img.className = "w-full h-48 object-cover rounded shadow hover:scale-105 transition-transform duration-300";
+        gallery.appendChild(img);
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        showImages(btn.dataset.year);
+        buttons.forEach(b => b.classList.remove('bg-blue-800'));
+        btn.classList.add('bg-blue-800');
+      });
+    });
+
+    // Standardanzeige
+    showImages("2025");
+    document.querySelector('.year-btn[data-year="2025"]').classList.add('bg-blue-800');
+  </script>
+</body>
+</html>

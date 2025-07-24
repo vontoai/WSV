@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wassersportverein - Infos für Gäste</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+  <!-- Navigation -->
+  <header class="bg-blue-900 text-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <button class="md:hidden focus:outline-none" id="menu-toggle">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <nav class="hidden md:flex justify-center w-full space-x-6" id="nav-menu">
+        <a href="index.html" class="hover:text-blue-300 transition-colors">Startseite</a>
+        <a href="ueber-uns.html" class="hover:text-blue-300 transition-colors">Über uns</a>
+        <a href="mitglieder.html" class="hover:text-blue-300 transition-colors">Mitglieder</a>
+        <a href="news.html" class="hover:text-blue-300 transition-colors">News</a>
+        <a href="infos-gaeste.html" class="hover:text-blue-300 transition-colors">Infos für Gäste</a>
+        <a href="downloads.html" class="hover:text-blue-300 transition-colors">Downloads</a>
+        <a href="galerie.html" class="hover:text-blue-300 transition-colors">Galerie</a>
+        <a href="kontakt.html" class="hover:text-blue-300 transition-colors">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden bg-blue-800 text-white px-4 py-4" id="mobile-menu">
+    <nav class="flex flex-col space-y-3">
+      <a href="index.html" class="hover:text-blue-300 transition-colors">Startseite</a>
+      <a href="ueber-uns.html" class="hover:text-blue-300 transition-colors">Über uns</a>
+      <a href="mitglieder.html" class="hover:text-blue-300 transition-colors">Mitglieder</a>
+      <a href="news.html" class="hover:text-blue-300 transition-colors">News</a>
+      <a href="infos-gaeste.html" class="hover:text-blue-300 transition-colors">Infos für Gäste</a>
+      <a href="downloads.html" class="hover:text-blue-300 transition-colors">Downloads</a>
+      <a href="galerie.html" class="hover:text-blue-300 transition-colors">Galerie</a>
+      <a href="kontakt.html" class="hover:text-blue-300 transition-colors">Kontakt</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-blue-900 mb-6">Informationen für Gäste</h1>
+    <div class="bg-white rounded-lg shadow-lg p-6 space-y-6">
+
+      <p class="text-gray-600">
+        Gäste mit motorisierten Freizeit- und Angelbooten sind herzlich willkommen.
+        Die maximale Bootslänge beträgt <strong>6,00 m</strong>.
+        Die Liegegebühr an einer Boje beträgt <strong>7,50 € pro Tag</strong>.
+        Das Slippen kostet ebenfalls <strong>7,50 € pro Tag</strong>.
+      </p>
+
+      <p class="text-gray-600">
+        Abstellplätze für Boote und Trailer befinden sich <strong>vor der Schranke am Binnensee</strong>.
+        Diese Plätze sind kostenpflichtig und müssen <strong>direkt an der Rezeption des Camping- und Freizeitparks Wulfener Hals</strong> gemietet werden.
+        Der Wassersportverein ist hierfür nicht zuständig.
+      </p>
+
+      <p class="text-gray-600">
+        Die Vergabe von Bojenplätzen sowie die Nutzung der Bootsrampe erfolgt ausschließlich über den Hafenmeister.
+        Er ist während der Saison <strong>täglich von 11:00 bis 17:00 Uhr</strong> erreichbar unter:
+        <br><strong>Tel.: 0163 3944892</strong>
+      </p>
+
+      <p class="text-gray-500 text-sm">
+        Weitere Informationen zur Technischen Betriebsordnung und Slipordnung erhalten Sie direkt beim Hafenmeister vor Ort.
+      </p>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-sm mb-2">Wassersportverein Wulfenerhals e.V. | 23769 Fehmarn, Campingplatz Wulfener Hals</p>
+      <p class="text-sm mb-2">E-Mail: Vorstand@wulfenerhals-wsv.de | Telefon: 01575 3540084</p>
+      <p class="text-sm mb-2 cursor-pointer hover:underline"><a href="impressum.html">Impressum</a></p>
+      <p class="text-sm">© 2025 Wassersportverein Wulfenerhals. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript für Mobile Menu -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
